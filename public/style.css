@@ -62,5 +62,6 @@ amedia-frontpage {
 
   .news-title {
     padding-left: 4vw;
+    flex: 1;
   }
 }
