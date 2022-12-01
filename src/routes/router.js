@@ -6,6 +6,7 @@ import preview from '../views/preview.view.js';
 import manifest from '../manifests/manifests.js';
 
 // Import Views
+import theComponent from "../views/component.view.js"
 
 // Initiate Router
 const router = express.Router();
@@ -19,11 +20,11 @@ router.get(
   }
 );
 
-router.get('/component', (req, res) => {
+router.get('/component', async (req, res) => {
   logger.info('Request /component route');
   res.type('text/html');
-
-  res.end('<amedia-frontpage> Her skal forsiden komme </amedia-frontpage>');
+  const html = await theComponent({ publication: req.query.publication });
+  res.end(html);
 });
 
 router.get('/preview', async (req, res) => {
